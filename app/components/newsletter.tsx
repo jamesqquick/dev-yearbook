@@ -14,9 +14,8 @@ export default function Newsletter() {
   const [visibleClasses, setvisibleClasses] = useState('opacity-0 scale-100')
   const hiddenClasses = 'opacity-0 scale-100';
   const [state, setState] = useState<string>();
-
+  
   useEffect(() => {
-    console.log(transition);
     if(actionData !== undefined && !actionData?.errors ){
       setState(NEWSLETTER_STATES.SUCCESS)
     }else if(actionData?.errors){
