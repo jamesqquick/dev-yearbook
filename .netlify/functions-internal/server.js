@@ -176,7 +176,7 @@ function Index() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "9492bdb5", entry: { module: "/build/entry.client-4XPZHDIX.js", imports: ["/build/_shared/chunk-64FTH6JT.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-2HGHCSA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-A2PXIYDT.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-9492BDB5.js" };
+var assets_manifest_default = { version: "7767ec65", entry: { module: "/build/entry.client-T66SJME4.js", imports: ["/build/_shared/chunk-6MKBFO43.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HZ5MFQ42.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-IRBSTMWK.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-7767EC65.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports }, routes = {
@@ -216,10 +216,11 @@ function getLoadContext(event, context) {
 var handler = (0, import_netlify.createRequestHandler)({
   build: server_build_exports,
   getLoadContext,
-  mode: "production"
+  mode: "development"
 });
 module.exports = __toCommonJS(server_exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   handler
 });
+//# sourceMappingURL=server.js.map
