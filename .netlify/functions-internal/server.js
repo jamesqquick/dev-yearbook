@@ -61,7 +61,7 @@ __export(root_exports, {
 var import_react2 = require("@remix-run/react");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-IY4AZL3D.css";
+var tailwind_default = "/build/_assets/tailwind-JZ4VO7GD.css";
 
 // route:/Users/jamesquick/code/devyearbook/app/root.tsx
 var links = () => [
@@ -88,27 +88,28 @@ __export(routes_exports, {
 var import_node = require("@remix-run/node");
 
 // app/components/newsletter.tsx
-var import_react3 = require("@remix-run/react"), import_react4 = require("react"), NEWSLETTER_STATES = {
+var import_react3 = require("@remix-run/react"), import_react4 = require("react"), STATES = {
   SUCCESS: "SUCCESS",
   SUBMITING: "SUBMITING",
   NOT_SUBMITED: "NOT_SUBMITTED",
   ERRORS: "ERRORS"
 };
 function Newsletter() {
-  var _a, _b, _c, _d;
-  let actionData = (0, import_react3.useActionData)(), transition = (0, import_react3.useTransition)(), [visibleClasses, setvisibleClasses] = (0, import_react4.useState)("opacity-0 scale-100"), hiddenClasses = "opacity-0 scale-100", [state, setState] = (0, import_react4.useState)();
+  var _a, _b, _c, _d, _e;
+  let actionData = (0, import_react3.useActionData)(), transition = (0, import_react3.useTransition)(), inputRef = (0, import_react4.useRef)(null), [visibleClasses, setvisibleClasses] = (0, import_react4.useState)("opacity-0 scale-100"), hiddenClasses = "opacity-0 scale-100", [state, setState] = (0, import_react4.useState)();
   return (0, import_react4.useEffect)(() => {
-    actionData !== void 0 && !(actionData == null ? void 0 : actionData.errors) ? setState(NEWSLETTER_STATES.SUCCESS) : (actionData == null ? void 0 : actionData.errors) ? setState(NEWSLETTER_STATES.ERRORS) : actionData === void 0 && setState(NEWSLETTER_STATES.NOT_SUBMITED), transition.submission && setState(NEWSLETTER_STATES.SUBMITING);
+    var _a2, _b2;
+    console.log(actionData), actionData !== void 0 && !(actionData == null ? void 0 : actionData.errors) ? setState(STATES.SUCCESS) : (actionData == null ? void 0 : actionData.errors) ? (setState(STATES.ERRORS), console.log("ERRRORS"), console.log((_a2 = inputRef.current) == null ? void 0 : _a2.focus), (_b2 = inputRef.current) == null || _b2.focus()) : actionData === void 0 && setState(STATES.NOT_SUBMITED), transition.submission && setState(STATES.SUBMITING);
   }, [actionData, transition]), setTimeout(() => {
     setvisibleClasses("transition-all duration-300 ease-in opacity-100 scale-100 block");
   }, 0), /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", {
-    className: `delay-200 ${state === NEWSLETTER_STATES.SUCCESS ? visibleClasses : hiddenClasses}`
-  }, state === NEWSLETTER_STATES.SUCCESS && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", {
+    className: `delay-200 ${state === STATES.SUCCESS ? visibleClasses : hiddenClasses}`
+  }, state === STATES.SUCCESS && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", {
     className: "text-2xl text-center"
   }, "Successfully subscribed!"), /* @__PURE__ */ React.createElement("p", {
     className: "text-center"
   }, "Please check your email to verify your subscription."))), /* @__PURE__ */ React.createElement("div", {
-    className: `${state !== NEWSLETTER_STATES.SUCCESS ? visibleClasses : hiddenClasses}`
+    className: `${state !== STATES.SUCCESS ? visibleClasses : hiddenClasses}`
   }, /* @__PURE__ */ React.createElement("h2", {
     className: "text-3xl mb-2 text-center"
   }, "Sign up for updates"), /* @__PURE__ */ React.createElement("p", {
@@ -116,17 +117,24 @@ function Newsletter() {
   }, "Follow progress as we build Dev Yearbook in public!"), /* @__PURE__ */ React.createElement(import_react3.Form, {
     method: "post",
     action: "/?index"
-  }, /* @__PURE__ */ React.createElement("label", null, "Email ", /* @__PURE__ */ React.createElement("input", {
+  }, /* @__PURE__ */ React.createElement("fieldset", {
+    disabled: state === STATES.SUBMITING
+  }, /* @__PURE__ */ React.createElement("div", {
+    className: "mb-2"
+  }, /* @__PURE__ */ React.createElement("input", {
+    className: `border-2 w-full px-4 py-2 text-black rounded-md ${((_a = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _a.email) ? "border-red-400" : "border-gray-200"}`,
+    type: "email",
+    "aria-label": "email",
     name: "email",
-    className: "block border-2 w-full px-4 py-1 rounded-sm border-gray-500 mb-4",
-    type: "text",
-    defaultValue: (_a = actionData == null ? void 0 : actionData.values) == null ? void 0 : _a.email
-  })), /* @__PURE__ */ React.createElement("button", {
+    defaultValue: (_b = actionData == null ? void 0 : actionData.values) == null ? void 0 : _b.email,
+    ref: inputRef,
+    placeholder: "your@email.com"
+  }), /* @__PURE__ */ React.createElement("p", {
+    className: "text-sm mt-1 h-4 text-red-400"
+  }, (_c = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _c.email)), /* @__PURE__ */ React.createElement("button", {
     type: "submit",
-    className: "border-2 border-gray-500 px-4 py-1 rounded-sm"
-  }, state === NEWSLETTER_STATES.SUBMITING ? "Loading..." : "Sign Up!"), /* @__PURE__ */ React.createElement("p", {
-    className: "text-center"
-  }, (_b = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _b.email)), ((_c = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _c.generalErrorMsg) && /* @__PURE__ */ React.createElement("p", null, (_d = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _d.generalErrorMsg)));
+    className: "border-2 border-gray-500 px-4 py-2 w-36 rounded-lg"
+  }, state === STATES.SUBMITING ? "Subscribing..." : "Subscribe!"))), state === STATES.ERRORS && ((_d = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _d.generalErrorMsg) && /* @__PURE__ */ React.createElement("p", null, (_e = actionData == null ? void 0 : actionData.errors) == null ? void 0 : _e.generalErrorMsg)));
 }
 
 // app/utils/mailchimp.ts
@@ -176,7 +184,7 @@ function Index() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "7767ec65", entry: { module: "/build/entry.client-T66SJME4.js", imports: ["/build/_shared/chunk-6MKBFO43.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HZ5MFQ42.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-IRBSTMWK.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-7767EC65.js" };
+var assets_manifest_default = { version: "51c34c04", entry: { module: "/build/entry.client-T66SJME4.js", imports: ["/build/_shared/chunk-6MKBFO43.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ZLV2ETAI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-LQYY4FQ4.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-51C34C04.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports }, routes = {
